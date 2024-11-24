@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet"> <!-- Google Font -->
+    <title>Avatar Display</title>
+    <style>
+        body {
+            background-image: url('finalsimages/Gemini7.jpg'); /* Replace with your image path */
+            background-size: cover; /* Image will cover the entire screen */
+            background-position: auto; /* Center the image */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        h1 {
+    font-family: 'Poppins', sans-serif; /* Change to the Poppins font */
+    color: blue; /* Set the text color to white */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Optional: Add a shadow for better visibility */
+}
+        #avatar-display {
+            margin: 20px 0;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 2px solid #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <h1 >Your Selected Avatar</h1>
+    <div id="avatar-display"></div>
+
+    <script>
+        // Function to get query parameters from URL
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Get the selected avatar from URL
+        const selectedAvatar = getQueryParam('avatar');
+
+        // Display the selected avatar
+        const avatarDisplay = document.getElementById('avatar-display');
+        if (selectedAvatar) {
+            avatarDisplay.innerHTML = `<img src="${selectedAvatar}" alt="Selected Avatar">`;
+        } else {
+            avatarDisplay.innerText = 'No avatar selected.';
+        }
+    </script>
+    <button onclick="location.href='index1.html'">Start</button> 
+</html> 
+

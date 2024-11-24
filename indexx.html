@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet"> <!-- Google Font -->
+    <title>Avatar Selection</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('finalsimages/Gemini6.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+        }
+
+        .avatar-selection {
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .avatars {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .avatar {
+            width: 100px;
+            height: 100px;
+            margin: 0 10px;
+            cursor: pointer;
+            border: 2px solid rgba(255, 255, 255, 0.5); /* White border with 50% opacity */
+            border-radius: 50%;
+            transition: border 0.3s;
+            background-color: transparent;
+        }
+
+        .avatar.selected {
+            border: 2px solid #007BFF; /* Blue border with 80% opacity */
+        }
+    </style>
+</head>
+<body>
+    <div class="avatar-selection">
+        <h2>Select Your Avatar</h2>
+        <div class="avatars">
+            <img src="finalsimages/Gemini1.jpg" alt="Avatar 1" class="avatar" onclick="selectAvatar(this, 'finalsimages/Gemini1.jpg')">
+            <img src="finalsimages/Gemini2.jpg" alt="Avatar 2" class="avatar" onclick="selectAvatar(this, 'finalsimages/Gemini2.jpg')">
+            <img src="finalsimages/Gemini3.jpg" alt="Avatar 3" class="avatar" onclick="selectAvatar(this, 'finalsimages/Gemini3.jpg')">
+            <img src="finalsimages/Gemini4.jpg" alt="Avatar 4" class="avatar" onclick="selectAvatar(this, 'finalsimages/Gemini4.jpg')">
+        </div>
+        <button id="submit-button" disabled>Submit</button>
+    </div>
+
+    <script>
+        let selectedAvatar = '';
+
+        function selectAvatar(element, avatar) {
+            selectedAvatar = avatar;
+            // Add selected class to the clicked avatar and remove from others
+            const avatars = document.querySelectorAll('.avatar');
+            avatars.forEach(av => av.classList.remove('selected'));
+            element.classList.add('selected'); // Add 'selected' class to the clicked avatar
+
+            // Enable the submit button
+            document.getElementById('submit-button').disabled = false;
+        }
+
+        document.getElementById('submit-button').onclick = function() {
+            if (selectedAvatar) {
+                window.location.href = 'avatar-display.html?avatar=' + encodeURIComponent(selectedAvatar);
+            }
+        };
+    </script>
+</body>
+</html>

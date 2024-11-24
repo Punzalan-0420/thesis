@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet"> <!-- Google Font -->
+    <title>document</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url('finalsimages/Gemini5.jpg'); /* Replace with your image path */
+            background-size: cover; /* Image will cover the entire screen */
+            background-position: center; /* Center the image */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Hide scrollbars */
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333; /* Darker text color for contrast */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #333; /* Darker text color for contrast */
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #333; /* Darker text color for contrast */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to the Game!</h1>
+        <form id="playerForm">
+            <label for="playerName">Enter player name:</label>
+            <input type="text" id="playerName" name="playerName" required>
+            <button onclick="location.href='indexx.html'">Start Game</button> 
+            
+        </div>
+        <p id="message"></p>
+    </div>
+
+
+    <audio id="backgroundMusic" src="music/Nightcore.mp3"></audio>
+
+    <script>
+        const backgroundMusic = document.getElementById('backgroundMusic');
+
+        // Check if music was playing on the previous page
+        if (sessionStorage.getItem('musicPlaying') === 'true') {
+            backgroundMusic.play();
+        } 
+
+        // Ensure the music element is loaded before playing
+        backgroundMusic.addEventListener('loadeddata', () => {
+            if (sessionStorage.getItem('musicPlaying') === 'true') {
+                backgroundMusic.play();
+            }
+        });
+    </script>
+    <script src="thesis.js"></script>
+    
+
+</body>
+</html>
